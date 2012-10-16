@@ -13,7 +13,13 @@ class ResponsesController < ApplicationController
   # POST /responses
   # POST /responses.json
   def create
-    @response = Response.new(params[:response])
+    @response = Response.new
+    @response.reason = Reason.new
+    @response.reason.why = params[:response][:why]
+    @response.reason.critique = params[:response][:critique]
+
+    @response.ip_address = request.remote_ip
+    @response.user_agent = request.env['HTTP_USER_AGENT']
 
     respond_to do |format|
       if @response.save
