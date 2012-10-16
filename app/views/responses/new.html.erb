@@ -1,9 +1,8 @@
-Dear Obama,
+<h2>Dear Obama,</h2>
 <%= form_for(@response) do |f| %>
   <% if @response.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@response.errors.count, "error") %> prohibited this response from being saved:</h2>
-
       <ul>
       <% @response.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,20 +10,14 @@ Dear Obama,
       </ul>
     </div>
   <% end %>
-
+  <%= f.fields_for :reason do |builder| %>
+  <%= render 'reason_fields', :f => builder %>
+  <% end %>
   <div class="field">
-    <%= f.label :ip_address %><br />
-    <%= f.text_field :ip_address %>
-  </div>
-  <div class="field">
-    <%= f.label :user_agent %><br />
-    <%= f.text_field :user_agent %>
-  </div>
-  <div class="field">
-    <%= f.label :who %><br />
-    <%= f.text_field :who %>
+    <%= f.hidden_field :user_agent %>
+    <%= f.hidden_field :who %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Send in Thoughts' %>
   </div>
 <% end %>
