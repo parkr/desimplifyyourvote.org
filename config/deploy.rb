@@ -47,7 +47,7 @@ namespace :sync do
   
   def dump_database
     db = YAML.load_file("#{File.dirname(__FILE__)}/database.yml")[db_env]
-    command  = "/usr/bin/mysqldump -u #{db['username']} -p#{db['password']} -h #{db['host']} #{db['database']} > #{deploy_to}/database.sql;" 
+    command  = "/usr/bin/pg_dump -U #{db['username']} -p#{db['password']} -h #{db['host']} -f #{deploy_to}/database.sql #{db['database']};"
     command += "cd #{deploy_to};"
     command += "tar -czf database.tgz database.sql;"
     command += "rm -rf database.sql;"
@@ -61,7 +61,7 @@ namespace :sync do
   def populate_database
     db = YAML.load_file("#{File.dirname(__FILE__)}/database.yml")['development']
     system("tar -xzf ./tmp/database.tgz -C ./tmp")
-    system("cat ./tmp/database.sql | mysql -u #{db['username']} -p#{db['password']} -h #{db['host']} #{db['database']}")
+    system("psql -U #{db['username']} -p#{db['password']} -h #{db['host']} -d #{db['database']} -f ./tmp/database.sql")
     system("rm -rf ./tmp/*") 
   end
 
