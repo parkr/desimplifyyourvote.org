@@ -20,6 +20,7 @@ namespace :deploy do
       command += "ln -s #{shared_path}/config/#{config}.yml #{latest_release}/config/#{config}.yml;"
     end
     command += "cd #{latest_release};"
+    command += "bundle install;"
     command += "rake assets:precompile;"
     run(command)
   end
