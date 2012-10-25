@@ -17,4 +17,3 @@ tar zxf ruby-1.9.3-p286.tar.gz
 cd ruby-1.9.3-p286
 ./configure --prefix=/usr/local --disable-install-doc --with-opt-dir=/usr/local/lib
 make && make install
-
