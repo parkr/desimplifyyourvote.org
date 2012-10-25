@@ -1,6 +1,7 @@
 set :stages, %w(demo production staging)
 set :default_stage, "staging"
 require 'capistrano/ext/multistage'
+require 'capistrano/nginx/tasks'
 
 set :application, "desimplifyyourvote"
 set :repository, "git@github.com:parkr/desimplifyyourvote.org.git"
@@ -8,8 +9,9 @@ set :scm, "git"
 set :keep_releases, 5
 set :normalize_asset_timestamps, false
 
+after "deploy:setup", "nginx:reload"
 after "deploy:update_code", "deploy:config"
-before "deploy:restart", "delayed_job:restart"
+#before "deploy:restart", "delayed_job:restart"
 
 namespace :deploy do
   task :start do ; end
@@ -21,7 +23,7 @@ namespace :deploy do
     end
     command += "cd #{latest_release};"
     command += "bundle install --quiet;"
-    command += "rake assets:precompile;"
+    command += "/usr/local/bin/ruby /usr/local/bin/rake prod:ready RAILS_ENV=production RAILS_GROUPS=assets;"
     run(command)
   end
   task :restart, :roles => :app, :except => { :no_release => true } do
