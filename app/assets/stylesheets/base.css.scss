@@ -1,7 +1,39 @@
 @import "compass";
 
+@font-face {
+  font-family: 'Petit Formal Script';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Petit Formal Script'), local('PetitFormalScript-Regular'), url(http://themes.googleusercontent.com/static/fonts/petitformalscript/v1/OEZwr2-ovBsq2n3ACCKoEmvnXUAwJxfbMgygMCbynzw.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'ABeeZee';
+  font-style: normal;
+  font-weight: 400;
+  src: local('ABeeZee'), local('ABeeZee-Regular'), url(http://themes.googleusercontent.com/static/fonts/abeezee/v1/zhbx7NQl8ktGP8FS60Z_oQLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+}
+@font-face {
+  font-family: 'ABeeZee';
+  font-style: italic;
+  font-weight: 400;
+  src: local('ABeeZee Italic'), local('ABeeZee-Italic'), url(http://themes.googleusercontent.com/static/fonts/abeezee/v1/gdFHbjHcLYROorto_Tq2E7O3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+
 body {
   @include background(image-url("exclusive_paper.png"),
                       linear-gradient(top left, lighten(#F1F0EE, 5%), #F1F0EE));
   font-family: Helvetica, Arial, sans-serif;
+}
+
+#header {
+  font-family: 'ABeeZee', Helvetica, Arial, sans-serif;
+  font-size: 62px;
+  letter-spacing: -9px;
+}
+
+#container {
+  margin: 0 auto;
+  width: 64%;
+  padding: 0;
 }
