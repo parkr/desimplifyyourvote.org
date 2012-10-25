@@ -7,6 +7,7 @@ gem 'devise', '>= 2.1'
 gem 'thin'
 gem 'exception_notification', :require => 'exception_notifier'
 gem "capistrano-ext", "~> 1.2.1"
+gem 'capistrano-nginx'
 
 # Gems used only for assets and not required
 # in production environments by default.
