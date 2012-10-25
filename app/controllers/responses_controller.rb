@@ -14,16 +14,19 @@ class ResponsesController < ApplicationController
   # POST /responses.json
   def create
     @response = Response.new
-    @response.reason = Reason.new
-    @response.reason.why = params[:response][:why]
-    @response.reason.critique = params[:response][:critique]
+    
+    reason = Reason.new
+    reason.why = params[:response][:reason][:why]
+    reason.critique = params[:response][:reason][:critique]
+    @response.reasons = [reason]
 
+    @response.who = params[:response][:who]
     @response.ip_address = request.remote_ip
     @response.user_agent = request.env['HTTP_USER_AGENT']
 
     respond_to do |format|
       if @response.save
-        format.html { redirect_to @response, notice: 'Response was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Your response was successfully submitted! Thanks for taking the time to affect change in our government.' }
         format.json { render json: @response, status: :created, location: @response }
       else
         format.html { render action: "new" }

@@ -1,7 +1,10 @@
 class Reason < ActiveRecord::Base
   attr_accessible :critique, :response_id, :why
   
-  validates :critique, :why, :with => Proc.new { |reason| !reason.critique.empty? || !reason.why.empty? }
+  validate do |reason|
+    logger.error("OH NOES: #{reason.inspect}")
+    errors.add(:base, "Must include at least one of: critique, reason.") unless !(reason.critique.empty? && reason.why.empty?)
+  end
   
   belongs_to :response
 end

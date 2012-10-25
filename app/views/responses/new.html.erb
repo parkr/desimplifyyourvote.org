@@ -14,8 +14,7 @@
   <%= render 'reason_fields', :f => builder %>
   <% end %>
   <div class="field">
-    <%= f.hidden_field :user_agent %>
-    <%= f.hidden_field :who %>
+    <%= f.hidden_field :who, :value => "obama" %>
   </div>
   <div class="actions">
     <%= f.submit 'Send in Thoughts' %>
