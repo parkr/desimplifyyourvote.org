@@ -11,6 +11,7 @@ server {
     proxy_set_header Host $http_host;
     proxy_redirect off;
     proxy_pass http://<%= server_name %>;
+    passenger_enabled on;
   }
 
   if (-f $document_root/system/maintenance.html) {
