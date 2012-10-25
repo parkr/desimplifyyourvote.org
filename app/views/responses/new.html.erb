@@ -1,5 +1,5 @@
-<h2>Dear Obama,</h2>
 <%= form_for(@response) do |f| %>
+  <h2>Dear <span id="candidate_name">Obama</span>,</h2>
   <% if @response.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@response.errors.count, "error") %> prohibited this response from being saved:</h2>
