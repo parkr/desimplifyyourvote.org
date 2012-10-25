@@ -9,5 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require base.css.scss
+ *= require reasons.css.scss
+ *= require responses.css.scss
  */
