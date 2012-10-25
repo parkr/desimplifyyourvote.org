@@ -1,0 +1,7 @@
+@import "compass";
+
+body {
+  @include background(image-url("exclusive_paper.png"),
+                      linear-gradient(top left, lighten(#F1F0EE, 5%), #F1F0EE));
+  font-family: Helvetica, Arial, sans-serif;
+}
