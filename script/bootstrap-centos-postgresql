@@ -1,6 +1,6 @@
 #! /bin/bash
 
-yum install postgresql.x86_64 postgresql-devel.x86_6 postgresql-libs.x86_64 postgresql-server.x86_64
+yum install postgresql postgresql-devel postgresql-libs postgresql-server
 service postgres start
 
 # ruby should be installed, so gems can now be installed
